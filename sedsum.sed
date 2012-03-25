@@ -43,5 +43,5 @@ s/0:/1/;tj
 # Branch to main loop.
 bm
 
-# End. Clear leading zeroes and the operator.
+# End.
 :z
