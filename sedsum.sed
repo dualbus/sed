@@ -1,6 +1,6 @@
 #!/bin/sed -f
 
-# Adds two numbers, X+Y, and returns the result.
+# Adds two numbers, X+Y, and prints the result.
 
 # Main loop.
 :m
