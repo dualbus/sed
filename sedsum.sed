@@ -8,7 +8,7 @@
 # End condition: X = 0
 # Did we reach it?
 # => Branch to the end
-/^0*+[[:digit:]]\{1,\}/bz
+s/^0*+//;tz
 
 # Decrease X
 s/+/:+/;ta
@@ -45,4 +45,3 @@ bm
 
 # End. Clear leading zeroes and the operator.
 :z
-s/0*+//
