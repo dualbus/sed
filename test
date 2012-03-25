@@ -1,0 +1,23 @@
+#!/bin/bash
+
+n_tests=25
+
+printf '%s\n' "Starting tests..."
+failed=0
+for ((i=0; i<n_tests; i++)); do
+    a=$RANDOM b=$RANDOM sum=$a+$b
+    sed=$(./sedsum <<< "$sum")
+    awk=$(awk -F'[+]' '{print $1+$2}' <<< "$sum")
+    if [[ $sed != $awk ]]; then
+        ((failed++))
+        printf '%s => %d != %d\n' "$sum" "$sed" "$awk"
+    fi
+done
+
+printf '%d/%d => %.2f%%\n' "$((n_tests - failed))" "$n_tests" \
+    "$(awk -v f="$failed" -v n="$n_tests" 'BEGIN{printf "%f",(1-f/n)*100}')"
+if ((failed > 0)); then
+    printf '%s\n' 'FAILED'
+else
+    printf '%s\n' 'PASSED'
+fi
