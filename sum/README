@@ -1,4 +1,4 @@
-sedsum
-======
+sum.sed
+=======
 
 Adds two numbers, X+Y, and prints the result.

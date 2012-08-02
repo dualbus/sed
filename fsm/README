@@ -1,0 +1,33 @@
+sed.fsm
+=======
+
+:author: Eduardo A. Bustamante López (dualbus)
+:description: Finite-state machines implemented in sed.
+
+The original problem was:
+
+> Day changed to 19 Jun 2012
+> 04:47 < spitzi> Hello, I'm struggling with writing a simple bash command, which
+> deletes all occurrences of "empty line 
+>                 followed by a line which begins with blah" from a piece of
+> text. Any advice ?
+> 04:48 < spitzi> Note: plain unix sed, not GNU sed etc.
+> 05:15 < geirha> so foo\n\n\nblah\n -> foo\n\nblah\n ?
+> 05:19 < geirha> what's the size, or a rough estimate of the maximum size, of
+> the file?
+> 05:24 < geirha> There's not really a "plain unix sed".
+> 06:32 < spitzi> Ah, why would the file size matter ?
+> 06:34 < geirha> If it's small enough, reading it into memory, then operate on
+> it, may be easier.
+> 06:35 < geirha> But I'm still unclear on what you want
+
+So, the purpose of this project was to solve the problem, *without* reading the
+whole file into memory, and using sed (since the question arose in ##sed, in
+freenode).
+
+First, I wanted to test some hypotheses, so I developed a small FSM, which is
+in the file ``fsm.sed``. After that, ``blahsym.sed`` attempts to solve the
+original problem using placeholding symbols. In the end, ``blah`` and
+``blah-readable`` implement the solution in sed. There might be some,
+optimizations to reduce the amount of characters in ``blah``, and to avoid the,
+literal line-feeds.
